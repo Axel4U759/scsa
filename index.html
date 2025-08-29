@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCSA</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column; /* 改为纵向排列 */
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+ 
+        .super-text {
+            font-size: 20vw;
+            font-weight: 900;
+            background: linear-gradient(to right, #ff0000, #0000ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            line-height: 1;
+            margin-bottom: 10px; /* 与小字间距 */
+        }
+ 
+        .sub-text {
+            font-size: 2vw; /* 响应式小字 */
+            color: #555;
+            text-align: center;
+            opacity: 0.8;
+            max-width: 80%; /* 防止过长换行 */
+        }
+    </style>
+</head>
+<body>
+    <div class="super-text">SCSA</div>
+    <div class="sub-text">Source Code Software Association</div>
+</body>
+</html>
