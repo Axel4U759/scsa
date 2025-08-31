@@ -83,7 +83,6 @@
         const themeToggle = document.getElementById('themeToggle'); 
         const html = document.documentElement; 
  
-        // 初始化主题 
         function initTheme() {
             const isDark = localStorage.getItem('theme')  === 'dark' || 
                           (window.matchMedia('(prefers-color-scheme:  dark)').matches && !localStorage.getItem('theme')); 
@@ -93,8 +92,7 @@
                 themeToggle.textContent  = '🌙';
             }
         }
- 
-        // 切换主题
+        
         function toggleTheme() {
             if (html.getAttribute('data-theme')  === 'dark') {
                 html.removeAttribute('data-theme'); 
