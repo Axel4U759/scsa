@@ -145,7 +145,7 @@
             
             if (isDark) {
                 html.setAttribute('data-theme',  'dark');
-                themeToggle.innerHTML  = '🌞<span class="tooltip">切换主题</span>';
+                themeToggle.innerHTML  = '🟡<span class="tooltip">切换主题</span>';
             }
         }
         function toggleTheme() {
@@ -156,7 +156,7 @@
             } else {
                 html.setAttribute('data-theme',  'dark');
                 localStorage.setItem('theme',  'dark');
-                themeToggle.innerHTML  = '🌞<span class="tooltip">切换主题</span>';
+                themeToggle.innerHTML  = '🟡<span class="tooltip">切换主题</span>';
             }
         }
  
