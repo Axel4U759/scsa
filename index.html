@@ -3,44 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCSA</title>
+    <title>SCSA - 昼夜模式</title>
     <style>
+        :root {
+            --bg-color: #f0f0f0;
+            --text-color: #555;
+            --gradient-start: #ff0000;
+            --gradient-end: #0000ff;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+ 
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #aaa;
+            --gradient-start: #ff6666; /* 夜间模式微调渐变色 */
+            --gradient-end: #6666ff;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+        }
+ 
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
-            flex-direction: column; /* 改为纵向排列 */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
+            background-color: var(--bg-color);
             overflow: hidden;
             font-family: Arial, sans-serif;
+            transition: background 0.5s ease;
         }
  
         .super-text {
             font-size: 20vw;
             font-weight: 900;
-            background: linear-gradient(to right, #ff0000, #0000ff);
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            text-shadow: 3px 3px 6px var(--shadow-color);
             line-height: 1;
-            margin-bottom: 10px; /* 与小字间距 */
+            margin-bottom: 10px;
+            transition: all 0.5s ease;
         }
  
         .sub-text {
-            font-size: 2vw; /* 响应式小字 */
-            color: #555;
+            font-size: 2vw;
+            color: var(--text-color);
             text-align: center;
             opacity: 0.8;
-            max-width: 80%; /* 防止过长换行 */
+            max-width: 80%;
+            transition: color 0.5s ease;
+        }
+ 
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            background: var(--gradient-start);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+ 
+        .toggle-btn:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
+    <button class="toggle-btn" id="themeToggle">夜间模式</button>
     <div class="super-text">SCSA</div>
     <div class="sub-text">Source Code Software Association</div>
+ 
+    <script>
+        // 自动检测系统主题
+        const prefersDark = window.matchMedia('(prefers-color-scheme:  dark)');
+        const themeToggle = document.getElementById('themeToggle'); 
+        const html = document.documentElement; 
+ 
+        // 初始化主题 
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme'); 
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark.matches))  {
+                html.setAttribute('data-theme',  'dark');
+                themeToggle.textContent  = '白天模式';
+            } else {
+                html.removeAttribute('data-theme'); 
+                themeToggle.textContent  = '夜间模式';
+            }
+        }
+ 
+        // 切换主题
+        function toggleTheme() {
+            if (html.getAttribute('data-theme')  === 'dark') {
+                html.removeAttribute('data-theme'); 
+                localStorage.setItem('theme',  'light');
+                themeToggle.textContent  = '夜间模式';
+            } else {
+                html.setAttribute('data-theme',  'dark');
+                localStorage.setItem('theme',  'dark');
+                themeToggle.textContent  = '白天模式';
+            }
+        } 
+ 
+        // 事件监听 
+        themeToggle.addEventListener('click',  toggleTheme);
+        prefersDark.addEventListener('change',  initTheme);
+ 
+        // 初始化 
+        initTheme();
+    </script>
 </body>
 </html>
