@@ -75,7 +75,7 @@
     </style>
 </head>
 <body>
-    <button class="theme-toggle" id="themeToggle">🌙</button>
+    <button class="theme-toggle" id="themeToggle">🌞</button>
     <div class="super-text">SCSA</div>
     <div class="sub-text">Source Code Software Association</div>
  
@@ -90,7 +90,7 @@
             
             if (isDark) {
                 html.setAttribute('data-theme',  'dark');
-                themeToggle.textContent  = '🌞';
+                themeToggle.textContent  = '🌙';
             }
         }
  
@@ -99,11 +99,11 @@
             if (html.getAttribute('data-theme')  === 'dark') {
                 html.removeAttribute('data-theme'); 
                 localStorage.setItem('theme',  'light');
-                themeToggle.textContent  = '🌙';
+                themeToggle.textContent  = '🌞';
             } else {
                 html.setAttribute('data-theme',  'dark');
                 localStorage.setItem('theme',  'dark');
-                themeToggle.textContent  = '🌞';
+                themeToggle.textContent  = '🌙';
             }
         }
  
