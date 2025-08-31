@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCSA - 昼夜模式</title>
+    <title>SCSA</title>
     <style>
         :root {
             --bg-color: #f0f0f0;
@@ -16,7 +16,7 @@
         [data-theme="dark"] {
             --bg-color: #121212;
             --text-color: #aaa;
-            --gradient-start: #ff6666; /* 夜间模式微调渐变色 */
+            --gradient-start: #ff6666;
             --gradient-end: #6666ff;
             --shadow-color: rgba(255, 255, 255, 0.1);
         }
@@ -57,47 +57,40 @@
             transition: color 0.5s ease;
         }
  
-        .toggle-btn {
+        .theme-toggle {
             position: fixed;
             top: 20px;
             right: 20px;
-            padding: 8px 15px;
-            background: var(--gradient-start);
-            color: white;
+            background: none;
             border: none;
-            border-radius: 20px;
+            font-size: 24px;
             cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 2px 5px var(--shadow-color);
             z-index: 100;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
  
-        .toggle-btn:hover {
-            transform: scale(1.05);
+        .theme-toggle:hover {
+            transform: scale(1.2);
         }
     </style>
 </head>
 <body>
-    <button class="toggle-btn" id="themeToggle">夜间模式</button>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
     <div class="super-text">SCSA</div>
     <div class="sub-text">Source Code Software Association</div>
  
     <script>
-        // 自动检测系统主题
-        const prefersDark = window.matchMedia('(prefers-color-scheme:  dark)');
         const themeToggle = document.getElementById('themeToggle'); 
         const html = document.documentElement; 
  
         // 初始化主题 
         function initTheme() {
-            const savedTheme = localStorage.getItem('theme'); 
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark.matches))  {
+            const isDark = localStorage.getItem('theme')  === 'dark' || 
+                          (window.matchMedia('(prefers-color-scheme:  dark)').matches && !localStorage.getItem('theme')); 
+            
+            if (isDark) {
                 html.setAttribute('data-theme',  'dark');
-                themeToggle.textContent  = '白天模式';
-            } else {
-                html.removeAttribute('data-theme'); 
-                themeToggle.textContent  = '夜间模式';
+                themeToggle.textContent  = '🌞';
             }
         }
  
@@ -106,19 +99,15 @@
             if (html.getAttribute('data-theme')  === 'dark') {
                 html.removeAttribute('data-theme'); 
                 localStorage.setItem('theme',  'light');
-                themeToggle.textContent  = '夜间模式';
+                themeToggle.textContent  = '🌙';
             } else {
                 html.setAttribute('data-theme',  'dark');
                 localStorage.setItem('theme',  'dark');
-                themeToggle.textContent  = '白天模式';
+                themeToggle.textContent  = '🌞';
             }
-        } 
+        }
  
-        // 事件监听 
         themeToggle.addEventListener('click',  toggleTheme);
-        prefersDark.addEventListener('change',  initTheme);
- 
-        // 初始化 
         initTheme();
     </script>
 </body>
