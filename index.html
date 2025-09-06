@@ -72,69 +72,69 @@
             z-index: 2;
         }
  
-	.sidebar {
-	    width: var(--sidebar-width);
-	    height: 100vh;
-	    position: fixed;
-	    right: 0;
-	    top: 0;
-	    background-color: var(--sidebar-bg, #e0e0e0);
-	    display: flex;
-	    flex-direction: column;
-	    align-items: center;
-	    padding-top: 20px;
-	    box-shadow: -2px 0 10px rgba(0,0,0,0.15);
-	    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-	    z-index: 100;
-	    opacity: 0.85;
-	    backdrop-filter: blur(5px);
-	    border-left: 1px solid rgba(255,255,255,0.1);
-	}
-	 
-	.sidebar:hover {
-	    width: 65px;
-	    opacity: 1;
-	    box-shadow: -5px 0 20px rgba(0,0,0,0.25);
-	    transform: translateX(-3px);
-	}
-	 
-	@keyframes sidebar-glow {
-	    0% { border-left-color: rgba(255,255,255,0.1); }
-	    50% { border-left-color: var(--gradient-start); }
-	    100% { border-left-color: rgba(255,255,255,0.1); }
-	}
-	.sidebar:hover {
-	    animation: sidebar-glow 3s infinite;
-	}
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            background-color: var(--sidebar-bg, #e0e0e0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 100;
+            opacity: 0.85;
+            backdrop-filter: blur(5px);
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }
+         
+        .sidebar:hover {
+            width: 65px;
+            opacity: 1;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.25);
+            transform: translateX(-3px);
+        }
+         
+        @keyframes sidebar-glow {
+            0% { border-left-color: rgba(255,255,255,0.1); }
+            50% { border-left-color: var(--gradient-start); }
+            100% { border-left-color: rgba(255,255,255,0.1); }
+        }
+        .sidebar:hover {
+            animation: sidebar-glow 3s infinite;
+        }
  
-	.sidebar-item {
-	    will-change: transform;
-	    transition: 
-	        transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-	        background 0.3s ease,
-	        box-shadow 0.3s ease;
-	}
-	 
-	.sidebar-item:hover {
-	    transform: scale(1.15) rotate(5deg);
-	    background-color: rgba(255,255,255,0.3);
-	    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-	}
-	 
-	.sidebar-item::after {
-	    content: "";
-	    position: absolute;
-	    width: 100%;
-	    height: 100%;
-	    border-radius: 50%;
-	    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
-	    opacity: 0;
-	    transition: opacity 0.3s;
-	}
-	 
-	.sidebar-item:hover::after {
-	    opacity: 1;
-	}
+        .sidebar-item {
+            will-change: transform;
+            transition: 
+                transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+         
+        .sidebar-item:hover {
+            transform: scale(1.15) rotate(5deg);
+            background-color: rgba(255,255,255,0.3);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+         
+        .sidebar-item::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+         
+        .sidebar-item:hover::after {
+            opacity: 1;
+        }
  
         .yiyan-panel {
             position: fixed;
@@ -158,6 +158,52 @@
             opacity: 1;
         }
  
+        .time-panel {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            background: var(--yiyan-bg);
+            border-radius: 8px;
+            padding: 12px 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 89;
+            opacity: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+ 
+        .time-active {
+            bottom: 90px;
+            opacity: 1;
+        }
+ 
+        .time-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+ 
+        #current-time {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-color);
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 1px;
+        }
+ 
+        #current-date {
+            font-size: 14px;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+ 
         .hitokoto {
             margin: 0;
             font-size: 18px;
@@ -175,7 +221,7 @@
             content: "」";
             margin-left: 3px;
         }
-
+ 
         .tooltip {
             position: absolute;
             left: -80px;
@@ -200,7 +246,7 @@
         <div class="super-text">SCSA</div>
         <div class="sub-text">Source Code Software Association</div>
     </div>
-
+ 
     <div class="sidebar">
         <div class="sidebar-item" id="themeToggle">
             🌙 
@@ -211,73 +257,119 @@
             💬 
             <span class="tooltip">显示一言</span>
         </div>
+ 
+        <div class="sidebar-item" id="timeBtn">
+             ⏱️ 
+            <span class="tooltip">显示时间</span>
+        </div>
     </div>
-
+ 
     <div class="yiyan-panel" id="yiyanPanel">
         <p class="hitokoto">正在加载...</p>
     </div>
  
+    <div class="time-panel" id="timePanel">
+        <div class="time-display">
+            <span id="current-time">13:00:00</span>
+            <span id="current-date">2025年9月6日 星期六</span>
+        </div>
+    </div>
+ 
     <script>
-        const themeToggle = document.getElementById('themeToggle'); 
-        const html = document.documentElement; 
+        const themeToggle = document.getElementById('themeToggle');  
+        const html = document.documentElement;  
  
         function initTheme() {
-            const isDark = localStorage.getItem('theme')  === 'dark' || 
-                          (window.matchMedia('(prefers-color-scheme:  dark)').matches && !localStorage.getItem('theme')); 
+            const isDark = localStorage.getItem('theme')   === 'dark' || 
+                          (window.matchMedia('(prefers-color-scheme:   dark)').matches && !localStorage.getItem('theme'));  
             
             if (isDark) {
-                html.setAttribute('data-theme',  'dark');
-                themeToggle.innerHTML  = '🟡<span class="tooltip">切换主题</span>';
+                html.setAttribute('data-theme',   'dark');
+                themeToggle.innerHTML   = '🟡<span class="tooltip">切换主题</span>';
             }
         }
  
         function toggleTheme() {
-            if (html.getAttribute('data-theme')  === 'dark') {
-                html.removeAttribute('data-theme'); 
-                localStorage.setItem('theme',  'light');
-                themeToggle.innerHTML  = '🌙<span class="tooltip">切换主题</span>';
+            if (html.getAttribute('data-theme')   === 'dark') {
+                html.removeAttribute('data-theme');  
+                localStorage.setItem('theme',   'light');
+                themeToggle.innerHTML   = '🌙<span class="tooltip">切换主题</span>';
             } else {
-                html.setAttribute('data-theme',  'dark');
-                localStorage.setItem('theme',  'dark');
-                themeToggle.innerHTML  = '🟡<span class="tooltip">切换主题</span>';
+                html.setAttribute('data-theme',   'dark');
+                localStorage.setItem('theme',   'dark');
+                themeToggle.innerHTML   = '🟡<span class="tooltip">切换主题</span>';
             }
         }
  
-        themeToggle.addEventListener('click',  toggleTheme);
+        themeToggle.addEventListener('click',   toggleTheme);
         initTheme();
-
-        const yiyanPanel = document.getElementById('yiyanPanel'); 
+ 
+        const yiyanPanel = document.getElementById('yiyanPanel');  
         let yiyanVisible = false;
  
         function loadYiyan() {
-            fetch('https://international.v1.hitokoto.cn?c=j&c=k&c=l&encode=json&charset=utf-8') 
-                .then(response => response.json()) 
+            fetch('https://international.v1.hitokoto.cn?c=j&c=k&c=l&encode=json&charset=utf-8')  
+                .then(response => response.json())  
                 .then(data => {
-                    document.querySelector('.hitokoto').textContent  = data.hitokoto; 
+                    document.querySelector('.hitokoto').textContent   = data.hitokoto;  
                     if(!yiyanVisible) toggleYiyan();
                 })
                 .catch(() => {
-                    document.querySelector('.hitokoto').textContent  = "加载中，请稍候...";
+                    document.querySelector('.hitokoto').textContent   = "加载中，请稍候...";
                 });
         }
  
         function toggleYiyan() {
             yiyanVisible = !yiyanVisible;
-            yiyanPanel.classList.toggle('yiyan-active',  yiyanVisible);
-            if(yiyanVisible && document.querySelector('.hitokoto').textContent  === "正在加载...") {
+            yiyanPanel.classList.toggle('yiyan-active',   yiyanVisible);
+            if(yiyanVisible && document.querySelector('.hitokoto').textContent   === "正在加载...") {
                 loadYiyan();
             }
         }
-
-        document.getElementById('yiyanBtn').addEventListener('click',  toggleYiyan);
-
-        document.addEventListener('click',  (e) => {
-            if(yiyanVisible && !e.target.closest('.yiyan-panel')  && !e.target.closest('#yiyanBtn'))  {
+ 
+        document.getElementById('yiyanBtn').addEventListener('click',   toggleYiyan);
+ 
+        document.addEventListener('click',   (e) => {
+            if(yiyanVisible && !e.target.closest('.yiyan-panel')   && !e.target.closest('#yiyanBtn'))   {
                 toggleYiyan();
             }
         });
-
+ 
         loadYiyan();
+ 
+        const timePanel = document.getElementById('timePanel'); 
+        let timeVisible = false;
+ 
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('zh-CN',  { 
+                hour12: false, 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+            const dateStr = `${now.getFullYear()} 年${now.getMonth()+1} 月${now.getDate()} 日 星期${weekdays[now.getDay()]}`;
+            
+            document.getElementById('current-time').textContent  = timeStr;
+            document.getElementById('current-date').textContent  = dateStr;
+        }
+ 
+        function toggleTime() {
+            timeVisible = !timeVisible;
+            timePanel.classList.toggle('time-active',  timeVisible);
+        }
+ 
+        updateTime();
+        setInterval(updateTime, 1000);
+ 
+        document.getElementById('timeBtn').addEventListener('click',  toggleTime);
+ 
+        document.addEventListener('click',  (e) => {
+            if(timeVisible && !e.target.closest('.time-panel')  && !e.target.closest('#timeBtn'))  {
+                toggleTime();
+            }
+        });
     </script>
 </body>
 </html>
